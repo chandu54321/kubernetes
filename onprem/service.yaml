@@ -6,7 +6,7 @@ metadata:
     env: de
     qt: pt
 spec:
-  type: Nodeport
+  type: NodePort
   selector:
     env: dev
     qt: env
