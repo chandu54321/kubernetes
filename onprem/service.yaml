@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: web
   labels:
-    env: dev
+    env: de
     qt: pt
 spec:
   type: nodeport
