@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: samplefirst1
+  labels:
+    env: dev
+    infa: qt
+spec:
+  minReadySeconds: 5
+  replicas: 3
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      name: sample
+      labels:
+        env: dev
+        qt: env
+    spec:
+      containers:
+        - name: web
+          image: shaikkhajaibrahim/spcjan2024:1.0
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 100m
+            limits:
+              memory: 300Mi
+              cpu: 500m              
