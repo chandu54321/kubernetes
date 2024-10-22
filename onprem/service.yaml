@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  labels:
+    env: dev
+    qt: pt
+spec:
+  type: nodeport
+  labels:
+    env: dev
+    infa: qt
+  ports:
+    port: 8080
+    targetPort: 8080  
