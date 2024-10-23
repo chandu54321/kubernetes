@@ -47,4 +47,8 @@ metadata:
   labels:
     env: db
 spec:
-  type: ClusterIP             
+  type: ClusterIP  
+  selector:
+    env: db
+  ports:
+    - port: 5432
