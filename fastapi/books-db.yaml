@@ -20,7 +20,7 @@ spec:
         first: db-book        
     spec:
       containers:
-        - name: book-db
+        - name: bookdb
           image: postgres:15-alpine
           env:
             - name: POSTGRES_book
