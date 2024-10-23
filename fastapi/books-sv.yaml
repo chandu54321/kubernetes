@@ -1,41 +1,42 @@
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: books-sv
   labels:
-    env: db
+    env: books
   annotations:
-    first: db-book
+    first: books-sv
 spec:
   minReadySeconds: 5
   replicas: 1
+  selector:
+    matchLabels:
+      env: books  # Ensure this matches the labels in the pod template
   template:
     metadata:
-      name: book-sv
+      name: books-sv
       labels:
-        env: db
+        env: books
       annotations:
-        first: book-sv        
+        first: books-sv        
     spec:
       containers:
-        - name: book-sv
-          image: shaikkhajaibrahim/libbookssvc:1.0
+        - name: books-sv
+          image: postgres:15-alpine
           env:
             - name: SECRET_KEY
               value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
             - name: DATABASE_URL
-              value: "postgresql://user:password@books-db:5432/booksdb"    
+              value: "postgresql://user:password@bookss-db:5432/booksdb"  # Added closing quotation mark
           resources:
             requests:
-              memory: 24M
-              cpu: 100m
+              memory: "24Mi"  # Use "Mi" for mebibytes
+              cpu: "100m"
             limits:
-              memory: 128M
-              cpu: 500m  
+              memory: "128Mi"
+              cpu: "500m"  
           ports:
-            containerPort: 8000
+            - containerPort: 8000  # Correctly formatted as a list item
 
 ---
 apiVersion: v1
@@ -43,11 +44,11 @@ kind: Service
 metadata:
   name: book-sv
   labels:
-    env: db
+    env: books
 spec:
   type: ClusterIP
   selector:
-    env: db
+    env: bookss  # Ensure this matches the labels in the Deployment template
   ports:
-    - port: 5432
-      targetPort: 5432  
+    - port: 5432       # The port exposed by the service
+      targetPort: 5432 # The port on the container to forward traffic to  
