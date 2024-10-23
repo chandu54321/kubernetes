@@ -1,0 +1,53 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books-sv
+  labels:
+    env: db
+  annotations:
+    first: db-book
+spec:
+  minReadySeconds: 5
+  replicas: 1
+  template:
+    metadata:
+      name: book-sv
+      labels:
+        env: db
+      annotations:
+        first: book-sv        
+    spec:
+      containers:
+       - name: book-sv
+         image: shaikkhajaibrahim/libbookssvc:1.0
+         env:
+          - name: SECRET_KEY
+            value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
+          - name: DATABASE_URL
+            value: "postgresql://user:password@books-db:5432/booksdb"    
+         resources:
+          requests:
+            memory: 24M
+            cpu: 100m
+          limits:
+            memory: 128M
+            cpu: 500m  
+         ports:
+          containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-sv
+  labels:
+    env: db
+spec:
+  type: ClusterIP
+  selector:
+    env: db
+  ports:
+    - port: 5432
+      targetPort: 5432  
