@@ -20,23 +20,23 @@ spec:
         first: users-sv        
     spec:
       containers:
-       - name: users-sv
-         image: postgres:15-alpine
-         env:
-           - name: SECRET_KEY
-             value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
-           - name: DATABASE_URL
-             value: "postgresql://user:password@users-db:5432/usersdb"
-         ports:
-         resources:
-          requests:
-            memory: 24M
-            cpu: 100m
-          limits:
-            memory: 128M
-            cpu: 500m  
-         ports:
-          containerPort: 8000
+        - name: users-sv
+          image: postgres:15-alpine
+          env:
+            - name: SECRET_KEY
+              value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
+            - name: DATABASE_URL
+              value: "postgresql://user:password@users-db:5432/usersdb"
+          ports:
+          resources:
+            requests:
+              memory: 24M
+              cpu: 100m
+            limits:
+              memory: 128M
+              cpu: 500m  
+          ports:
+            containerPort: 8000
 
 ---
 apiVersion: v1
