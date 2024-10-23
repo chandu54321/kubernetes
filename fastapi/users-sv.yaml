@@ -27,7 +27,7 @@ spec:
             - name: SECRET_KEY
               value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
             - name: DATABASE_URL
-              value: "postgresql://user:password@db:5432/user-db"
+              value: postgresql://user:password@user-db:5432/usersdb
           resources:
             requests:
               memory: "24Mi"  # Use "Mi" for mebibytes
