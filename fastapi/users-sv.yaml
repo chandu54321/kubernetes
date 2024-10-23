@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: users-sv
-          image: postgres:15-alpine
+          image: shaikkhajaibrahim/libbookssvc:1.0
           env:
             - name: SECRET_KEY
               value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
