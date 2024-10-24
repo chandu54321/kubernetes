@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: books-sv
-          image: shaikkhajaibrahim/libuserssvc:1.0
+          image: shaikkhajaibrahim/libbookssvc:1.0
           resources:
             requests:
               memory: "24Mi"  # Use "Mi" for mebibytes
@@ -33,7 +33,7 @@ spec:
               
           env:
             - name: SECRET_KEY
-              value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
+              value: ‘YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k’
             - name: DATABASE_URL
               value: postgresql://user:password@book-db:5432/bookdb          
           ports:
