@@ -14,7 +14,6 @@ spec:
       env: back  # Ensure this matches the labels in the pod template
   template:
     metadata:
-      name: book-sv
       labels:
         env: back
       annotations:
@@ -32,7 +31,7 @@ spec:
               cpu: "500m"  
           env:
             - name: SECRET_KEY
-              value:  ‘YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k’
+              value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'  # Fixed quotes
             - name: DATABASE_URL
               value: postgresql://user:password@book-db:5432/booksdb
           ports:
@@ -44,11 +43,11 @@ kind: Service
 metadata:
   name: book-sv
   labels:
-    env: db
+    env: back  # Updated label to match the Deployment's environment label
 spec:
   type: ClusterIP
   selector:
     env: back  # Ensure this matches the labels in the Deployment template
   ports:
     - port: 8000       # The port exposed by the service
-      targetPort: 8000 # The port on the container to forward traffic to  
+      targetPort: 8000 # The port on the container to forward traffic to 
