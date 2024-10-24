@@ -22,13 +22,9 @@ spec:
       containers:
         - name: bookdb
           image: postgres:15-alpine
-          env:
-            - name: POSTGRES_book
-              value: user
-            - name: POSTGRES_PASSWORD
-              value: password
-            - name: POSTGRES_DB
-              value: booksdb    
+          envFrom:
+            configMapRef:
+              name: config-db
           resources:
             requests:
               memory: "24Mi"  # Use "Mi" for mebibytes
