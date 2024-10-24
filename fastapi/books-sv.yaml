@@ -23,19 +23,19 @@ spec:
       containers:
         - name: books-sv
           image: shaikkhajaibrahim/libuserssvc:1.0
+          resources:
+            requests:
+              emory: "24Mi"  # Use "Mi" for mebibytes
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"    
+              
           env:
             - name: SECRET_KEY
               value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
             - name: DATABASE_URL
-              value: postgresql://user:password@book-db:5432/bookdb
-              postgresql://book:password@book-db:5432/booksdb
-          resources:
-            requests:
-              memory: "24Mi"  # Use "Mi" for mebibytes
-              cpu: "100m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"  
+              value: postgresql://user:password@book-db:5432/bookdb          
           ports:
             - containerPort: 8000  # Correctly formatted as a list item
 
