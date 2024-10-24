@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: books-sv
+  name: book-sv
   labels:
-    env: books
+    env: back
   annotations:
-    first: books-sv
+    first: book-sv
 spec:
   minReadySeconds: 5
   replicas: 1
   selector:
     matchLabels:
-      env: books  # Ensure this matches the labels in the pod template
+      env: back  # Ensure this matches the labels in the pod template
   template:
     metadata:
-      name: books-sv
+      name: book-sv
       labels:
-        env: books
+        env: back
       annotations:
-        first: books-sv        
+        first: book-sv        
     spec:
       containers:
-        - name: books-sv
+        - name: book-sv
           image: shaikkhajaibrahim/libbookssvc:1.0
           resources:
             requests:
@@ -29,13 +29,12 @@ spec:
               cpu: "100m"
             limits:
               memory: "128Mi"
-              cpu: "500m"    
-              
+              cpu: "500m"  
           env:
             - name: SECRET_KEY
-              value: ‘YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k’
+              value:  ‘YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k’
             - name: DATABASE_URL
-              value: postgresql://user:password@book-db:5432/bookdb          
+              value: postgresql://user:password@book-db:5432/bookdb
           ports:
             - containerPort: 8000  # Correctly formatted as a list item
 
@@ -45,11 +44,11 @@ kind: Service
 metadata:
   name: book-sv
   labels:
-    env: books
+    env: db
 spec:
   type: ClusterIP
   selector:
-    env: bookss  # Ensure this matches the labels in the Deployment template
+    env: back  # Ensure this matches the labels in the Deployment template
   ports:
-    - port: 5432       # The port exposed by the service
-      targetPort: 5432 # The port on the container to forward traffic to  
+    - port: 8000       # The port exposed by the service
+      targetPort: 8000 # The port on the container to forward traffic to  

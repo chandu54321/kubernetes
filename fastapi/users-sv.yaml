@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: users-sv
-          image: shaikkhajaibrahim/libbookssvc:1.0
+          image: shaikkhajaibrahim/libuserssvc:1.0
           resources:
             requests:
               memory: "24Mi"  # Use "Mi" for mebibytes
@@ -50,5 +50,5 @@ spec:
   selector:
     env: back  # Ensure this matches the labels in the Deployment template
   ports:
-    - port: 5432       # The port exposed by the service
-      targetPort: 5432 # The port on the container to forward traffic to  
+    - port: 8000       # The port exposed by the service
+      targetPort: 8000 # The port on the container to forward traffic to  
