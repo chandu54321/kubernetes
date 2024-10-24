@@ -34,7 +34,7 @@ spec:
             - name: SECRET_KEY
               value:  ‘YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k’
             - name: DATABASE_URL
-              value: postgresql://user:password@book-db:5432/bookdb
+              value: postgresql://user:password@book-db:5432/booksdb
           ports:
             - containerPort: 8000  # Correctly formatted as a list item
 
