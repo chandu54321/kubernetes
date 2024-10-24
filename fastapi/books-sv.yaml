@@ -25,7 +25,7 @@ spec:
           image: shaikkhajaibrahim/libuserssvc:1.0
           resources:
             requests:
-              emory: "24Mi"  # Use "Mi" for mebibytes
+              memory: "24Mi"  # Use "Mi" for mebibytes
               cpu: "100m"
             limits:
               memory: "128Mi"
