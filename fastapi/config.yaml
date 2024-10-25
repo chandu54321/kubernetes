@@ -20,3 +20,25 @@ data:
    POSTGRES_USER: user
    POSTGRES_PASSWORD: password
    POSTGRES_DB: booksdb
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-db2
+  labels:
+    dev: db
+data:
+   SECRET_KEY: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
+   DATABASE_URL: postgresql://user:password@book-db:5432/booksdb
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-db3
+  labels:
+    dev: db
+data:
+  SECRET_KEY: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
+  DATABASE_URL: postgresql://user:password@user-db:5432/usersdb

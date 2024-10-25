@@ -23,8 +23,8 @@ spec:
         - name: user-db
           image: postgres:15-alpine
           envFrom:
-            configMapRef:
-              name: config-db1
+            - configMapRef:
+               name: config-db1  
           resources:
             requests:
               memory: "24Mi"  # Use "Mi" for mebibytes

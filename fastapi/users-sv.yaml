@@ -30,10 +30,8 @@ spec:
               memory: "128Mi"
               cpu: "500m"  
           env:
-            - name: SECRET_KEY
-              value: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
-            - name: DATABASE_URL
-              value: postgresql://user:password@user-db:5432/usersdb
+            - configMapRef:
+               name: config-db3 
           ports:
             - containerPort: 8000  # Correctly formatted as a list item
 
