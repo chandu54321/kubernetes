@@ -25,7 +25,7 @@ spec:
           resources:
             requests:
               memory: "24Mi"  # Use "Mi" for mebibytes
-              cpu: "100m"
+              cpu: "400m"
             limits:
               memory: "128Mi"
               cpu: "500m"  
