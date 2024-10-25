@@ -31,7 +31,7 @@ spec:
               cpu: "500m"  
           env:
             - configMapRef:
-               name: config-db2                     
+              name: config-db2                     
           ports:
             - containerPort: 8000  # Correctly formatted as a list item
 
