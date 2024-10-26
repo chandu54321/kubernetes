@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Namespace
+metadata: 
+  name: first-sample
+  labels:
+    env: dev
+  namespace: dev-names
+  annotations:
+    name: first
+      
