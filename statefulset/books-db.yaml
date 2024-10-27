@@ -58,10 +58,10 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-      storageClassName: master
-      selector:
-        matchLabels:
-          env: dev
-      resources:
-        requests:
-          storage: 1Gi     
+        storageClassName: master
+        selector:
+          matchLabels:
+            env: dev
+        resources:
+          requests:
+            storage: 1Gi     
