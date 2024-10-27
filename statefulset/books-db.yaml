@@ -44,7 +44,7 @@ spec:
               memory: 500m  
           envFrom:
             - configMapRef:
-              name: config-db 
+                name: config-db 
           ports:
             - containerPort: 5432 
           volumeMounts:
@@ -52,9 +52,9 @@ spec:
               mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
     - metadata:
-      name: books-db
-      labels:
-        env: dev 
+        name: books-db
+        labels:
+          env: dev 
       spec:
         accessModes:
           - ReadWriteOnce
