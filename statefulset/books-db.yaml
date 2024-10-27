@@ -37,11 +37,11 @@ spec:
           image: postgres:15-alpine
           resources:
             requests:
-              cpu: 24Mi
-              memory: 100m
+              memory: 24M
+              cpu: 100m
             limits:
-              cpu: 128Mi
-              memory: 500m  
+              memory: 128M
+              cpu: 500m  
           envFrom:
             - configMapRef:
                 name: config-db 
