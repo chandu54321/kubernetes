@@ -24,17 +24,27 @@ spec:
           ports:
             - containerPort: 80
       volumeMounts:
-        - name: m-db1
+        - name: libdb
           mountPath: var/lib/postgresql/data
+volumes:
+  - name: libdb
+    persistentVolumeClaim:
+      claimName: mysql-pvc      
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata: 
-  name: pvc
+  name: mysql-pvc
   labels:
     env: dev
   namespace: first-sample
 spec:
+    accessModes:
+      - ReadWriteOnce
+    storageClassName: manage
+    resources:
+      requests:
+        storage: 1Gi  
                       
 
 
