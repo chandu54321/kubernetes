@@ -5,13 +5,13 @@ metadata:
   name: ser-first
   labels: 
     env: dev
-  spec:
-    type: ClusterIP
-    selector:
-      db: books
-    ports:
-      - port: 5432      
-        targetPort: 5432  
+spec:
+  type: ClusterIP
+  selector:
+    db: books
+  ports:
+    - port: 5432      
+      targetPort: 5432  
 ---
 apiVersion: apps/v1
 kind: StatefulSet
