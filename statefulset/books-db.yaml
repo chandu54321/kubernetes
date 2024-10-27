@@ -51,15 +51,13 @@ spec:
             - name: books-db
               mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
+    - metadata:
       name: books-db
       labels:
-        env: dev
-    spec:
-      accessModes:
-        - ReadWriteOnce
+        env: dev 
+      spec:
+        accessModes:
+          - ReadWriteOnce
       storageClassName: master
       selector:
         matchLabels:
