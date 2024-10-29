@@ -16,13 +16,13 @@ spec:
             pathType: Prefix
             backend:
               service: 
-                name: preschool-svc
+                name: pre-school
                 port:
                    number: 80 
           - path: /skate
             pathType: Prefix
             backend:
               service: 
-                name: preschool-svc
+                name: pre-skate
                 port:
                    number: 80                
