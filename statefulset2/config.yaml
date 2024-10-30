@@ -29,7 +29,7 @@ metadata:
   labels:
     dev: db
 data:
-   SECRET_KEY: 'YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k'
+   SECRET_KEY: YtDEVWnL35aAIP-5yxeLjAZ49R920-mMNDfwPyWULu63HFsYzo0f-LO2InxC8eu428k
    DATABASE_URL: postgresql://user:password@books-db-o.books-db:5432/booksdb # in this @books-db-o.books-db is first is service name and next is service name that which we menation
 
 ---

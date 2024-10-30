@@ -49,6 +49,7 @@ spec:
           volumeMounts:
             - name: book-sv-vol
               mountPath: /var/lib/postgresql/data
+              subPath: data
           ports:
             - containerPort: 5432     
   volumeClaimTemplates:
