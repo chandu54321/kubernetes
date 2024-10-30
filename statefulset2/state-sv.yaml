@@ -26,7 +26,7 @@ spec:
   selector:
     matchLabels:
       env: dev
-  serviename: book-sv-db # this should be service name  
+  serviceName: book-sv-db # this should be service name  
   template:
     metadata:
       name: book-sv-pos
