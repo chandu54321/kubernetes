@@ -44,7 +44,7 @@ spec:
               cpu: "50
           envFrom:
             - configMapRef:
-                name: config-db1
+                name: config-db2
           volumeMounts:
             - name: book-sv-vol
               mountPath: /var/lib/postgresql/data
