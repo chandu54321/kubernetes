@@ -42,7 +42,7 @@ spec:
               cpu: "100m"
             limits:
               memory: "128Mi"
-              cpu: "50
+              cpu: "50"
           envFrom:
             - configMapRef:
                 name: config-db1
