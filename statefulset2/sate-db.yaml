@@ -1,67 +1,67 @@
----
 apiVersion: v1
 kind: Service
 metadata:
   name: books-db
-  labels: 
-    env: dev
-spec:
-  type: ClusterIP
-  selector:
-    db: books
-  ports:
-    - port: 5432      
-      targetPort: 5432  
----
-apiVersion: apps/v1
-kind: StatefulSet
-metadata: 
-  name: firstsimple
   labels:
     env: dev
 spec:
-  minReadySeconds: 3
+  type: ClusterIP
+  clusterIP: none
+  selector:
+    env: dev
+  ports:
+    - port: 5432
+      targetPort: 5432
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: books-db
+  labels:
+    env: dev
+spec:
+  minReadySeconds: 4
   replicas: 2
   selector:
     matchLabels:
       env: dev
-  serviceName: booksdb-svc
+  serviename: books-db # this should be service name  
   template:
     metadata:
-      name: go-first
+      name: book-pos
       labels:
-        env: dev    
+        env: dev
     spec:
       containers:
-        - name: bools-db
+        - name: booksdb
           image: postgres:15-alpine
           resources:
             requests:
-              memory: 24M
-              cpu: 100m
+              memory: "24Mi" 
+              cpu: "100m"
             limits:
-              memory: 128M
-              cpu: 500m  
+              memory: "128Mi"
+              cpu: "50
           envFrom:
             - configMapRef:
-                name: config-db 
-          ports:
-            - containerPort: 5432 
+                name: config-db1
           volumeMounts:
-            - name: books-db
+            - name: books-vol
               mountPath: /var/lib/postgresql/data
+          ports:
+            - containerPort: 5432     
   volumeClaimTemplates:
     - metadata:
-        name: books-db
+        name: books-vol
         labels:
-          env: dev 
+          env: dev
       spec:
         accessModes:
           - ReadWriteOnce
-        storageClassName: master
         selector:
-          matchLabels:
-            env: dev
+          env: dev
+        storageClassName: managed
         resources:
           requests:
-            storage: 1Gi     
+            storage: 1Gi
+        

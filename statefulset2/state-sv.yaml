@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-sv-db
+  labels:
+    env: dev
+spec:
+  type: ClusterIP
+  clusterIP: none
+  selector:
+    env: dev
+  ports:
+    - port: 5432
+      targetPort: 5432
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: book-sv-db
+  labels:
+    env: dev
+spec:
+  minReadySeconds: 4
+  replicas: 2
+  selector:
+    matchLabels:
+      env: dev
+  serviename: book-sv-db # this should be service name  
+  template:
+    metadata:
+      name: book-sv-pos
+      labels:
+        env: dev
+    spec:
+      containers:
+        - name: book-svdb
+          image: shaikkhajaibrahim/libbookssvc:1.0
+          resources:
+            requests:
+              memory: "24Mi" 
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "50
+          envFrom:
+            - configMapRef:
+                name: config-db1
+          volumeMounts:
+            - name: book-sv-vol
+              mountPath: /var/lib/postgresql/data
+          ports:
+            - containerPort: 5432     
+  volumeClaimTemplates:
+    - metadata:
+        name: book-sv-vol
+        labels:
+          env: dev
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        selector:
+          env: dev
+        storageClassName: managed
+        resources:
+          requests:
+            storage: 1Gi
+        
