@@ -50,7 +50,7 @@ spec:
             - name: books-vol
               mountPath: /var/lib/postgresql/data
           ports:
-            - containerPort: 5432     
+            - containerPort: 5432    
   volumeClaimTemplates:
     - metadata:
         name: books-vol
