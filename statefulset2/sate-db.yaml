@@ -59,8 +59,6 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
-        selector:
-          env: dev
         storageClassName: managed
         resources:
           requests:
