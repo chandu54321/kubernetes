@@ -1,0 +1,44 @@
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hori-preschool
+  labels:
+    env: dev
+  namespace: first-sample
+spec:
+  scaleTargetRef:
+    apiVersion: autoscaling/v2
+    kind: CrossVersionObjectReference
+    name: pre-school
+    minReplicas:1
+    maxReplicas: 4
+    metrics:
+      - type: Resource
+        resource:
+          name: pre-school
+          target:
+            type: Utilization
+            averageUtilization: 70    
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hori-skate
+  labels:
+    env: dev
+  namespace: first-sample
+spec:
+  scaleTargetRef:
+    apiVersion: autoscaling/v2
+    kind: CrossVersionObjectReference
+    name: pre-skate
+    minReplicas:1
+    maxReplicas: 4
+    metrics:
+      - type: Resource
+        resource:
+          name: pre-skate
+          target:
+            type: Utilization
+            averageUtilization: 70    
