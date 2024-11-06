@@ -4,6 +4,6 @@ metadata:
   name: alpine-pod
 spec:
   containers:
-    - name: alpine
+    - name: first
       image: alpine
       command: ["/bin/sh", "-c", "sleep 3600"].
