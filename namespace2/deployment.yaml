@@ -4,8 +4,8 @@ metadata:
   name: myapp
   namespace: qa
 spec:
-  selector:
-    replicas: 3 
+  replicas: 3
+  selector: 
     matchLabels:
       app: myapp
   template:
