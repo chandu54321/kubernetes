@@ -5,6 +5,7 @@ metadata:
   namespace: qa
 spec:
   selector:
+    replicas: 3 
     matchLabels:
       app: myapp
   template:
@@ -12,7 +13,6 @@ spec:
       labels:
         app: myapp
     spec:
-      replicas: 3
       containers:
       - name: myapp
         image: nginx:1.27
